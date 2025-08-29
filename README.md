@@ -51,13 +51,15 @@ The best case input value of 'key' for 'linear_search' is the first element sinc
 
 - [ ] 8. Call `print_results(compare_search())` and paste the results here:
 
-**TODO: add your timing results here**
+|      n |   linear |   binary |
+|--------|----------|----------|
+| 100000 |    3.490 |    0.009 |
 
 - [ ] 9. The theoretical worst-case running time of linear search is $O(n)$ and binary search is $O(log_2(n))$. Do these theoretical running times match your empirical results? Why or why not?
 
-**TODO: your answer goes here**
+With a list size of 100,000, the binary search algorithm has a speedup of 388x. If we use the predicted speed by big O, we get 16.6 steps in binary, meaning linear took 6020x longer with 100,000 steps. While the ratios are not equal, binary is much faster than linear, both theoretically and empirically. 
 
 - [ ] 10. Binary search assumes the input list is already sorted. Assume it takes $\Theta(n^2)$ time to sort a list of length $n$. Suppose you know ahead of time that you will search the same list $k$ times. 
-  + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search? **TODO: your answer goes here**
-  + For binary search? **TODO: your answer goes here**
-  + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting? **TODO: your answer goes here**
+  + What is worst-case complexity of searching a list of $n$ elements $k$ times using linear search? Θ(kn)
+  + For binary search? Θ(n² + k log n)
+  + For what values of $k$ is it more efficient to first sort and then use binary search versus just using linear search without sorting? n² + k log n < kn -> n² < k(n - log n) -> k > n²/n - log n -> k >~ n since n² / n - log n is basically almost n (ex: n = 10000, n² / n - log n = 10004.0008; n = 100, n² / n - log n = 102.04). So when k is larger or about the same as n, you should sort, then use binary. If k is smaller than n, you should most likely just use linear search.
